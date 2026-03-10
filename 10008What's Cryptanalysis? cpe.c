@@ -10,6 +10,7 @@ int main()
 	
 	while(scanf("%d",&m)!=EOF)
 	{
+		getchar();
 		int count[100]={0},max=0;
 		
 		for(i=0;i<m;i++)
@@ -22,12 +23,20 @@ int main()
 				if(input[j]<=90 && input[j]>=65)
 				{
 					count[input[j]]=count[input[j]]+1;
+					if(count[input[j]]>max)
+					{
+						max=count[input[j]];
+					}
 				}
 				if(input[j]<=122 && input[j]>=97)
 				{
 					count[input[j]-32]=count[input[j]-32]+1;
+					if(count[input[j]-32]>max)
+					{
+						max=count[input[j]-32];
+					}
 				}
-				max=max+num;
+				
 			}
 		}
 		
@@ -42,4 +51,5 @@ int main()
 	}
 	
 	return 0;
-} 
+}  
+
