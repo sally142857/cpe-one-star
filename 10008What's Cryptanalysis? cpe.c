@@ -11,7 +11,7 @@ int main()
 	while(scanf("%d",&m)!=EOF)
 	{
 		getchar(); //吃掉scanf的換行符號
-		int count[100]={0}; //用來記錄每個字母出現的次數
+		int count[100]={0}; //用來記錄每個字母出現的次數(因為不會超過90{大寫Z}，所以設100範圍就好)
 		int max=0;          //用來記錄最高頻率
 		
 		for(i=0;i<m;i++)
@@ -55,4 +55,5 @@ int main()
 	
 	return 0;
 } 
+
 
