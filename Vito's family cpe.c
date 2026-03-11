@@ -21,7 +21,7 @@ int main()
 		{
 			for(int j=0;j<r-1;j++)
 			{
-				if(arr[j]>arr[j+1])
+				if(arr[j]>arr[j+1]) //排序，方便之後找中位數
 				{
 					int temp=arr[j];
 					arr[j]=arr[j+1];
@@ -32,7 +32,7 @@ int main()
 		
 		int mid;
 		int x=r;
-		if(x%2==0)
+		if(x%2==0) //找中位數
 		{
 			x/=2;
 			mid=(arr[x-1]+arr[x])/2;
@@ -42,6 +42,7 @@ int main()
 			x/=2;
 			mid=arr[x];
 		}
+		//計算和
 		int sum=0;
 		for(int i=0;i<r;i++)
 		{
@@ -51,3 +52,4 @@ int main()
 	}
 	return 0;
 } 
+
