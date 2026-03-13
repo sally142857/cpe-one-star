@@ -4,7 +4,7 @@ void cheak(long long n)
 {
 	if((n/10000000)>0)
 	{
-		cheak(n/10000000); //¥Î»¼°j¨Ó©î¤À¼Æ¦r 
+		cheak(n/10000000); //ç”¨éè¿´ä¾†æ‹†åˆ†æ•¸å­— 
 		printf(" kuti");
 		n%=10000000;
 	}
@@ -28,17 +28,17 @@ void cheak(long long n)
 	}
 	if(n>0)
 	{
-		printf(" %lld",n); //­t³d¦L¥X¼Æ¦r(»¼°jªº¼Æ¦r³£¬O±q³oÃä¦L¥X¨Óªº) 
+		printf(" %lld",n); //è² è²¬å°å‡ºæ•¸å­—(éè¿´çš„æ•¸å­—éƒ½æ˜¯å¾é€™é‚Šå°å‡ºä¾†çš„) 
 	}
 }
 
 int main()
 {
 	long long n;
-	int i=1;
+	int i=1; //ç·¨è™Ÿ
 	while(scanf("%lld",&n)!=EOF)
 	{
-		if(n==0) //´ú¸ê¥i¯à¬O0 
+		if(n==0) //æ¸¬è³‡å¯èƒ½æ˜¯0 
 		{
 			printf("%4d. %lld\n",i,n);
 			i++;
@@ -51,3 +51,4 @@ int main()
 	}
 	return 0;
 }
+
