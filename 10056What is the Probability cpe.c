@@ -11,7 +11,7 @@ int main()
 		int n,i;
 		double p;
 		scanf("%d %lf %d",&n,&p,&i);
-		//¨¾§b(¤£µ¥©ó0¤~¹L) 
+		//é˜²å‘†(ä¸ç­‰æ–¼0æ‰é) 
 		if(p==0)
 		{
 			printf("0.0000\n");
