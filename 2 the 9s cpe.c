@@ -4,11 +4,9 @@
 
 int main()
 {
-	char num[1001]={0};
+	char num[1001];
 	int i;
-	
-	
-	while(scanf("%s",num))
+	while(scanf("%s",num)!=EOF)
 	{
 		if(num[0]=='0'&&strlen(num)==1)
 		{
@@ -17,41 +15,39 @@ int main()
 		else
 		{
 			printf("%s ",num);
+			int sum,n=0;
 			
-			int mul,n=0;
-			if(strlen(num)==1 && num[0]=='9')
+			if(num[0]=='9'&&strlen(num)==1)
 			{
-				printf("is a multiple of 9 and has 9-degree 1.");
-				n=1; //不會跑下面輸出
-			}
-			
+				n=1;	//因為不會跑下面判斷，所以先判斷
+			}	
+		
 			while(strlen(num)>=2)
 			{
-				mul=0;
+				sum=0;
 				for(i=0;i<strlen(num);i++)
 				{
-					mul=mul+num[i]-'0';
-				} 
-				if(mul%9==0)
+					sum+=num[i]-'0';
+				}
+				if(sum%9==0)
 				{
 					n++;
 				}
-				sprintf(num,"%d",mul);
+				sprintf(num,"%d",sum);
 			}
-			if(n>1)
+			
+			if(n>0)
 			{
-				printf("is a multiple of 9 and has 9-degree %d.", n);
+				printf("is a multiple of 9 and has 9-degree %d.",n);
 			}
-			else if(n==0) 
+			else if(n==0)
 			{
 				printf("is not a multiple of 9.");
 			}
-			
 			printf("\n");
-			 
 		}
-		memset(num, 0, sizeof(num));
+		
+		memset(num,0,sizeof(num));
 	}
-	
 	return 0;
-}
+} 
