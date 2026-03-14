@@ -22,7 +22,7 @@ int main()
 			if(strlen(num)==1 && num[0]=='9')
 			{
 				printf("is a multiple of 9 and has 9-degree 1.");
-				n=1;
+				n=1; //不會跑下面輸出
 			}
 			
 			while(strlen(num)>=2)
