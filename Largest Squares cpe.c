@@ -27,23 +27,22 @@ int main()
 		{
 			scanf("%d %d",&r,&c);
 			
-			int radius = 0; //¥b®| 
-			int max_L = 1; // ¦Ü¤ÖÃäªø¬O 1
-			char center = str[r][c]; //¤¤¤ß 
+			int radius = 0; //åŠå¾‘ 
+			int max_L = 1; // è‡³å°‘é‚Šé•·æ˜¯ 1
 			
 			while(1)
 			{
 				int next_r= radius+1;
 				
-				//§PÂ_¦V¥~¤@°é¬O§_¥X¬É 
+				//åˆ¤æ–·å‘å¤–ä¸€åœˆæ˜¯å¦å‡ºç•Œ 
 				if(r-next_r<0 || r+next_r>=m || c-next_r<0 ||c+next_r>=n)
 				{
 					break;
 				} 
 				
-				//§PÂ_©P³ò¬O§_¸ò¤¤¤ßªº¦r¤¸¤@¼Ë
+				//åˆ¤æ–·å‘¨åœæ˜¯å¦è·Ÿä¸­å¿ƒçš„å­—å…ƒä¸€æ¨£
 				int cheak=1;
-				for(int i=r-next_r ; i<=r+next_r ; i++)
+				for(int i=r-next_r ; i<=r+next_r ; i++) //å¾å·¦åˆ°å³æª¢æŸ¥
 				{
 					for(int j=c-next_r ; j<=c+next_r ; j++)
 					{
@@ -59,7 +58,7 @@ int main()
 					}	
 				} 
 				
-				//Ä~ÄòÀË¬d¤U¤@°é 
+				//ç¹¼çºŒæª¢æŸ¥ä¸‹ä¸€åœˆ 
 				if(cheak)
 				{
 					radius++;
@@ -69,7 +68,7 @@ int main()
 					break;
 				}		
 			} 
-			// 1(¤¤¤ß) + 2*(¥ª¥k¨âÃä) <-¦]¬°¬O¥ª¥k¡u¨â¡vÃä¡A©Ò¥H*2 
+			// 1(ä¸­å¿ƒ) + 2*(å·¦å³å…©é‚Š) <-å› ç‚ºæ˜¯å·¦å³ã€Œå…©ã€é‚Šï¼Œæ‰€ä»¥*2 
 			printf("%d\n",1+2*radius);
 		}		
 	}	
