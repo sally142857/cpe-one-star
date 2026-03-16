@@ -14,15 +14,13 @@ int main()
 	
 	while(scanf("%d",&n)!=EOF)
 	{
-		int m;
 		int i=0;
 		int x=n;
 		int org_n=n;
 		
 		while(x--)
 		{
-			scanf("%d",&m);
-			arr[i]=m;
+			scanf("%d",&arr[i]);
 			i++;
 		}
 		
