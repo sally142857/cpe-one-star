@@ -26,7 +26,7 @@ int main()
 			i++;
 		}
 		
-		//�ƧǨ�� 
+		//排序函數
 		qsort(arr, org_n, sizeof(int), compare);
 		
 		if(org_n%2==0)
