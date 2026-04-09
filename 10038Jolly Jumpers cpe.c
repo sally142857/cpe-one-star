@@ -1,10 +1,57 @@
+//C++ç‰ˆæœ¬
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int n;
+	while(scanf("%d",&n)!=EOF)
+	{
+		int arr[3005]={0};
+		int flag=1;
+		for(int i=1;i<=n;i++)
+		{
+			scanf("%d",&arr[i]);
+		}
+		
+		int cheak[3001]={0};
+		for(int i=1;i<n;i++)
+		{
+			cheak[abs(arr[i+1]-arr[i])]=1;
+		}
+		
+		for(int i=1;i<n;i++)
+		{
+			if(cheak[i]!=1)
+			{
+				flag=0;
+				break;
+			}
+		}
+		
+		if(flag==1)
+		{
+			printf("Jolly\n"); 
+		}
+		else
+		{
+			printf("Not jolly\n");
+		}
+	}
+	return 0;	
+} 
+
+//Cèªè¨€ç‰ˆæœ¬
 #include <stdio.h> 
 #include <stdlib.h>
  
 int main()
 {
 	int n,m,temp;
-	int arr[3000]={0}; //­pºâ®t­È 
+	int arr[3000]={0}; //è¨ˆç®—å·®å€¼ 
 	int i,j,x,y,count; 
 	count=0;
 	temp=0;
@@ -24,9 +71,9 @@ int main()
 		temp=m;
 		count++;
 		
-		int diff[3000]={0}; //¬ö¿ı1~n-1¥X²{¦¸¼Æ 
+		int diff[3000]={0}; //ç´€éŒ„1~n-1å‡ºç¾æ¬¡æ•¸ 
 		
-		if(count==n+1) //§PÂ_¬O§_¤w¸g¿é¤Jn­Ó¼Æ 
+		if(count==n+1) //åˆ¤æ–·æ˜¯å¦å·²ç¶“è¼¸å…¥nå€‹æ•¸ 
 		{
 			for(x=0;x<n-1;x++)
 			{
@@ -34,12 +81,12 @@ int main()
 				{
 					if(arr[x]==j)
 					{
-						diff[j]++; //¦b¸Ó¼Æªº¦ì¸m++¡A¥i¥H§PÂ_­«½Æ 
+						diff[j]++; //åœ¨è©²æ•¸çš„ä½ç½®++ï¼Œå¯ä»¥åˆ¤æ–·é‡è¤‡ 
 					}
 				}
 			}
 			
-			int flag=1; //§PÂ_¬O§_¦³­«½Æ 
+			int flag=1; //åˆ¤æ–·æ˜¯å¦æœ‰é‡è¤‡ 
 			for(j=1;j<=n-1;j++)
 			{
 				if(diff[j]>=2)
@@ -67,7 +114,7 @@ int main()
 				printf("Not jolly\n");
 			}
 			
-			i=0;       //ªì©l¤Æ 
+			i=0;       //åˆå§‹åŒ– 
 			count=0;
 			temp=0;
 		}
