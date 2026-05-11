@@ -1,3 +1,55 @@
+//C++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int n,max=0;
+	cin>>n;
+	getchar(); //過濾換行
+	
+	int table[26]={0}; //計字母出現次數 
+	 
+	while(n--)
+	{
+		string s;
+		getline(cin,s);
+		
+		for(int i=0;i<=s.length();i++)
+		{
+			if('A'<=s[i]&&s[i]<='Z')
+			{
+				table[s[i]-'A']++;
+				if(table[s[i]-'A']>max)
+				{
+					max=table[s[i]-'A'];
+				}
+			}
+			if('a'<=s[i]&&s[i]<='z')
+			{
+				table[s[i]-'a']++;
+				if(table[s[i]-'a']>max)
+				{
+					max=table[s[i]-'a'];
+				}
+			}
+		}
+	}
+	
+	for(int i=max;i>0;i--)
+	{
+		for(int j=0;j<26;j++)
+		{
+			if(table[j]==i)
+			{
+				cout<<char(j+'A')<<" "<<i<<endl; 
+			}
+		}
+	}
+	return 0;
+}
+//C語言
 #include<stdlib.h>      
 #include<string.h>    
 #include<stdio.h>
