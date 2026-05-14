@@ -1,3 +1,33 @@
+//C++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	string s[101];
+	int k=0,maxlen=0;
+	while(getline(cin,s[k]))
+	{
+		if(s[k].length()>maxlen)
+		{
+			maxlen=s[k].length();	
+		}	
+		k++;
+	}
+	
+	for(int i=0;i<maxlen;i++)
+	{
+		for(int j=k-1;j>=0;j--)
+		{
+			s[j].length()>i?cout<<s[j][i]:cout<<" ";
+			//如果s[j]長度到了，但沒到i的長度，補空格 
+		}
+		cout<<"\n";
+	}
+	return 0;
+}
+//C語言
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
