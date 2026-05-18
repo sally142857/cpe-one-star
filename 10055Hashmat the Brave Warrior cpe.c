@@ -1,3 +1,20 @@
+//C++
+#include <iostream>
+#include <string>
+#include <cstdlib> 
+using namespace std;
+
+int main()
+{
+	long long int a,b;
+	while(cin>>a>>b)
+	{
+		cout<<abs(b-a)<<endl;
+	}
+	return 0;
+}
+
+//C語言
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
