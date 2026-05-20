@@ -1,3 +1,71 @@
+//C++
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void Bangla(long long int n) //邏輯與C語言版本一樣
+{
+	while(n>0)
+	{
+		if(n>=10000000)
+		{
+			cout<<" "<<n/10000000<<" kuti";
+			n%=10000000;
+			continue;
+		}
+		if(100000<=n&&n<10000000)
+		{
+			cout<<" "<<n/100000<<" lakh";
+			n%=100000;
+			continue;
+		}
+		if(1000<=n&&n<100000)
+		{
+			cout<<" "<<n/1000<<" hajar";
+			n%=1000;
+			continue;
+		}
+		if(100<=n&&n<1000)
+		{
+			cout<<" "<<n/100<<" shata";
+			n%=100;
+			continue;
+		}
+		else
+		{
+			cout<<" "<<n;
+			break;
+		}
+	}
+}
+
+int main()
+{
+	long long int n;
+	int T=1;
+	while(cin>>n)
+	{
+		cout<<setw(4)<<setfill(' ')<<T<<".";
+		if(n==0)
+		{
+			cout<<" "<<0;
+		}
+		if(n>=10000000)
+		{
+			Bangla(n/10000000);
+			cout<<" kuti";
+			Bangla(n%10000000);
+		}
+		else
+		{
+			Bangla(n);
+		}
+		cout<<"\n";
+		T++;
+	}
+	return 0;
+}
+//C語言
 #include <stdio.h>
 
 void cheak(long long n)
