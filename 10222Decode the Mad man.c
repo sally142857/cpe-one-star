@@ -1,174 +1,58 @@
-#include <stdio.h>
-#include<math.h>      
-#include<string.h>    
-#include<stdio.h>
-//¦Û¤v¥Íªº´¼»Ùª© 
+//C++
+#include <iostream>
+#include <string> 
+#include <cctype>
+using namespace std;
+
 int main()
 {
-	char ch;
-	int len,i;
-	
-	while((ch=getchar())!=EOF)
+	string s1="`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./"; //æŠŠéµç›¤æ”¾é€²å» 
+	string s2;
+	while(getline(cin,s2))
 	{
-		if(ch>=65&&ch<=90)
+		for(int i=0;i<s2.length();i++)
 		{
-			ch=ch+32;
-		}
-			switch(ch)
+			if(s2[i]>='A'&&s2[i]<='Z')
 			{
-				case '2':
-					printf("`");
-					break;
-				case '3':
-					printf("1");
-					break;
-				case '4':
-					printf("2");
-					break;
-				case '5':
-					printf("3");
-					break;
-				case '6':
-					printf("4");
-					break;
-				case '7':
-					printf("5");
-					break;
-				case '8':
-					printf("6");
-					break;
-				case '9':
-					printf("7");
-					break;
-				case '0':
-					printf("8");
-					break;
-				case '-':
-					printf("9");
-					break;
-				case '=':
-					printf("0");
-					break;
-				case 'e':
-					printf("q");
-					break;
-				case 'r':
-					printf("w");
-					break;
-				case 't':
-					printf("e");
-					break;
-				case 'y':
-					printf("r");
-					break;
-				case 'u':
-					printf("t");
-					break;
-				case 'i':
-					printf("y");
-					break;
-				case 'o':
-					printf("u");
-					break;
-				case 'p':
-					printf("i");
-					break;
-				case '[':
-					printf("o");
-					break;
-				case ']':
-					printf("p");
-					break;
-				case '\\':
-					printf("[");
-					break;
-				case 'd':
-					printf("a");
-					break;
-				case 'f':
-					printf("s");
-					break;
-				case 'g':
-					printf("d");
-					break;
-				case 'h':
-					printf("f");
-					break;
-				case 'j':
-					printf("g");
-					break;
-				case 'k':
-					printf("h");
-					break;
-				case 'l':
-					printf("j");
-					break;
-				case ';':
-					printf("k");
-					break;
-				case '\'':
-					printf("l");
-					break;
-				case 'c':
-					printf("z");
-					break;
-				case 'v':
-					printf("x");
-					break;
-				case 'b':
-					printf("c");
-					break;
-				case 'n':
-					printf("v");
-					break;
-				case 'm':
-					printf("b");
-					break;
-				case ',':
-					printf("n");
-					break;
-				case '.':
-					printf("m");
-					break;
-				case '/':
-					printf(",");
-					break;
-				case ' ':	
-					printf(" ");
-					break;
-				default:
-					printf("%c",ch);
-					break;
+				s2[i]=tolower(s2[i]); //è®Šå¤§å¯«(å› ç‚ºå­—æ¯çš†ç‚ºå°å¯«) 
 			}
-
-	}
-	
+			if(s2[i]==32||s2[i]==10)
+			{
+				cout<<s2[i]; //å¦‚æœæ˜¯ç©ºç™½(32)æˆ–æ›è¡Œ(10)å°±ç›´æ¥è¼¸å‡º 
+			}
+			else
+			{
+				cout<<s1[s1.find(s2[i])-2];
+			}
+		}
+		cout<<"\n";
+	 } 
 	return 0;
-} 
+}
 
-//AIª© 
+//AIç‰ˆ 
+//Cèªè¨€
+#include <string.h>
+#include <ctype.h>
 
-//#include <string.h>
-//#include <ctype.h>
-//
-//int main() {
-//    char ch;
-//    // ³o¬O¹ïÀ³ªí¡A§âÁä½L«öÁä«ö¶¶§Ç±Æ¦n
-//    char *keyboard = "`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./";
-//    
-//    while ((ch = getchar()) != EOF) {
-//        ch = tolower(ch); // ²Î¤@Âà¤p¼g
-//        
-//        // §ä§ä¬İ²{¦b³o­Ó¦r¦bÁä½Lªíªº­ş­Ó¦ì¸m
-//        char *p = strchr(keyboard, ch);
-//        
-//        if (p != NULL) {
-//            // ¦pªG§ä¨ì¤F¡A´N¦L¥X¥¦¥ªÃä¨â®æªº¦r (p - 2)
-//            printf("%c", *(p - 2));
-//        } else {
-//            // ¦pªG¨S¦bªí¸Ì¡]¨Ò¦pªÅ¥Õ©Î´«¦æ¡^¡A´N·Ó­ì¼Ë¦L
-//            printf("%c", ch);
-//        }
-//    }
-//    return 0;
-//}
+int main() {
+   char ch;
+   // é€™æ˜¯å°æ‡‰è¡¨ï¼ŒæŠŠéµç›¤æŒ‰éµæŒ‰é †åºæ’å¥½
+   char *keyboard = "`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./";
+   
+   while ((ch = getchar()) != EOF) {
+       ch = tolower(ch); // çµ±ä¸€è½‰å°å¯«
+       
+       // æ‰¾æ‰¾çœ‹ç¾åœ¨é€™å€‹å­—åœ¨éµç›¤è¡¨çš„å“ªå€‹ä½ç½®
+       char *p = strchr(keyboard, ch);
+       
+       if (p != NULL) {
+           // å¦‚æœæ‰¾åˆ°äº†ï¼Œå°±å°å‡ºå®ƒå·¦é‚Šå…©æ ¼çš„å­— (p - 2)
+           printf("%c", *(p - 2));
+       } else {
+           // å¦‚æœæ²’åœ¨è¡¨è£¡ï¼ˆä¾‹å¦‚ç©ºç™½æˆ–æ›è¡Œï¼‰ï¼Œå°±ç…§åŸæ¨£å°
+           printf("%c", ch);
+       }
+   }
+   return 0;
+}
