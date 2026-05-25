@@ -1,3 +1,38 @@
+//C++
+#include <iostream>
+#include <string> 
+#include <cctype>
+using namespace std;
+
+int main()
+{
+	string s;
+	int count=0;
+	
+	while(getline(cin,s))
+	{
+		for(int i=0;i<s.length();i++)
+		{
+			if(s[i]=='"'&&count==0)
+			{
+				cout<<"``";
+				count=1;
+			}
+			else if(s[i]=='"'&&count==1)
+			{
+				cout<<"''";
+				count=0;
+			}
+			else
+			{
+				cout<<s[i];
+			}
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+//C語言
 #include <stdio.h>
 
 int main()
@@ -32,31 +67,4 @@ int main()
 	return 0;
 }
 
-
-//
-//int main() 
-//{
-//	char c;
-//	int cnt = 0;
-//	while((c = getchar()) != EOF) 
-//	{
-//		if(c == '"')
-//		 {
-//			if(cnt % 2 == 0)
-//			 {
-//				printf("``");
-//			 } 
-//			 else
-//			 {
-//				printf("''");
-//			 }
-//			 cnt++;
-//		 } 
-//		 else 
-//		 {
-//			putchar(c);
-//		 }
-//	}
-//	return 0;
-//}
 
