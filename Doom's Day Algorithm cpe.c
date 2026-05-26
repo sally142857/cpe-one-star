@@ -1,3 +1,30 @@
+//C++
+#include <iostream>
+#include <string> 
+using namespace std;
+
+int main()
+{
+	string day[7]={"Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"};
+	int D[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int m,d,sum=0;
+		cin>>m>>d;
+		
+		sum+=d;
+		for(int i=1;i<m;i++)
+		{
+			sum+=D[i];
+		}
+		cout<<day[sum%7]<<endl;
+	}
+	return 0;
+}
+
+//Cèªè¨€
 #include <stdio.h>
 
 int main()
@@ -5,11 +32,11 @@ int main()
 	int t,m,d,i;
 	scanf("%d",&t);
 	char *day[7]={"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
-	//¥ı§â¤é´Á¦s°}¦C
-	//¥Î«ü¼Ğ°}¦C¤~¥i¥H¦s¦r¦ê
+	//å…ˆæŠŠæ—¥æœŸå­˜é™£åˆ—
+	//ç”¨æŒ‡æ¨™é™£åˆ—æ‰å¯ä»¥å­˜å­—ä¸²
 	 
-	int mouthday[13]={0,31,28,31,30,31,30,31,31,30,31,30,31}; //2011¦~¨C­Ó¤ëªº¤Ñ¼Æ 
-	int startdate=6; //1/1ªº¤é´Á 
+	int mouthday[13]={0,31,28,31,30,31,30,31,31,30,31,30,31}; //2011å¹´æ¯å€‹æœˆçš„å¤©æ•¸ 
+	int startdate=6; //1/1çš„æ—¥æœŸ 
 	int cheakday;
 	int nowday;
 	
@@ -18,14 +45,14 @@ int main()
 		scanf("%d %d",&m,&d);
 		
 		cheakday=0;
-		for(i=1;i<m;i++) //¤£§t·í¤ë 
+		for(i=1;i<m;i++) //ä¸å«ç•¶æœˆ 
 		{
-			cheakday+=mouthday[i]; //§â©Ò¦³¸g¹Lªº¤Ñ¼Æ¥[°_¨Ó 
+			cheakday+=mouthday[i]; //æŠŠæ‰€æœ‰ç¶“éçš„å¤©æ•¸åŠ èµ·ä¾† 
 		}
 		cheakday+=d;  
 		
-		nowday=(startdate+cheakday)%7; //¨ú¾l¼Æ 
-		printf("%s\n",day[nowday]); //¦]¬°1/1¬O¬P´Á¤»¡A©Ò¥H¬P´Á¤»©ñ[0]ªº¦ì¸m 
+		nowday=(startdate+cheakday)%7; //å–é¤˜æ•¸ 
+		printf("%s\n",day[nowday]); //å› ç‚º1/1æ˜¯æ˜ŸæœŸå…­ï¼Œæ‰€ä»¥æ˜ŸæœŸå…­æ”¾[0]çš„ä½ç½® 
 		
 	}
 	return 0;
