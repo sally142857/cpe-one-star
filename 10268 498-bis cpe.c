@@ -1,123 +1,101 @@
-//#include <stdio.h>
-//#define MAX_SIZE 100000 
-//¦³ª`ÄÀª© 
-//int main() {
-//    int x;
-//    long long a[MAX_SIZE]; // ¦s«Y¼Æ¡A¥Î long long ¨¾Ãz
-//    
-//    // 1. ¥~¼h°j°é¡GÅª¨ú¨C¤@ÃDªº X
-//    while (scanf("%d", &x) != EOF) 
-//	{
-//        
-//        int n = 0; // °O¿ı³o¤@ÃD¦³´X­Ó«Y¼Æ
-//        char c;
-//        // 2. ¤º¼h°j°é¡G³B²z¨º¤@ªø¦ê«Y¼Æ
-//        while (1) 
-//		{
-//            scanf("%lld", &a[n]);
-//            n++;
-//            
-//            c = getchar(); 
-//            // ¦pªGÅª¨ìªº¬OªÅ¥Õ¡A´N«ùÄò¦Y±¼¡Aª½¨ì¹J¨ì¡u«DªÅ¥Õ¡vªºªF¦è
-//            while (c == ' ') 
-//			{
-//                c = getchar();
-//            }
-//
-//            // ¦pªG¦Y§¹ªÅ¥Õµo²{¬O´«¦æ¡A©ÎªÌÀÉ®×µ²§ô¡A´N¸Ó°±¤F
-//            if (c == '\n' || c == EOF) 
-//			{
-//                break;
-//            }
-//
-//            // ¦pªG¤£¬O´«¦æ (¨Ò¦p¬O¤U¤@­Ó¼Æ¦rªº¶}ÀY)¡A§â¥¦©ñ¦^¥hµ¹ scanf Åª
-//            ungetc(c, stdin);
-//        }
-//    }
-//        
-//        // °²³]¿é¤J 1 1 1 (x^2 + x + 1)¡An=3
-//        // §Ú­Ì­nºâ·L¤À«áªº¼Æ­È
-//        
-//        long long result = 0;
-//        // ³Ì°ª¦¸¤è (degree) = n - 1
-//        // ·L¤À¤½¦¡¡G C * x^p  ->  C * p * x^(p-1)
-//        // ª`·N¡G±`¼Æ¶µ (³Ì«á¤@¶µ a[n-1]) ·L¤À«á¬O 0¡A©Ò¥H§Ú­Ì¥u¶]¨ì n-2
-//        
-//        int current_power = n - 1; // ·í«e¶µªº¦¸¤è
-//        
-//        for (int i = 0; i < n - 1; i++) {
-//            // ³o¤@¶µ·L¤À«áªº«Y¼Æ = ­ì«Y¼Æ * ¦¸¤è
-//            long long diff_coeff = a[i] * current_power;
-//            
-//            // ¥Î Horner's Method (¯³¤E»à) ²Ö¥[
-//            // ³oºØºâªk¤£¥Î pow()¡Aºë·Ç¤S§Ö
-//            result = result * x + diff_coeff;
-//            
-//            current_power--; // ¦¸¤è»¼´î
-//        }
-//        
-//        // ¯S§P¡G¦pªG­ì¥»¥u¦³¤@­Ó±`¼Æ (¨Ò¦p¿é¤J¥u¦³ "5")
-//        // ·L¤À«áÀ³¸Ó¬O 0¡A¤W­±ªº°j°é¤£·|¶]¡Aresult ¹w³]´N¬O 0¡A¥¿½T¡C
-//        
-//        printf("%lld\n", result);
-//    }
-//
-//    return 0;
-//}
+//C++
+#include <iostream>
+#include <string> 
+using namespace std;
 
-
-#include <stdio.h>
-// 1. ¥[¤jªÅ¶¡¡GÃD¥Ø«Y¼Æ¥i¯à«D±`¦h¡Aµ¹ 100 ¸U¤ñ¸ûÃ­
-#define MAX_SIZE 1000000 
-
-// 2. ·h¨ì¥~­±¡G¤j°}¦C¤@©w­n©ñ¥ş°ì (Global)¡A¤£µM·|Ãz Stack (RE)
-long long a[MAX_SIZE]; 
-
-int main() 
+int main()
 {
-    int x;
-    // long long a[MAX_SIZE]; <-- ­ì¥»¦b³o¸Ì¡A®³±¼¡I
-    
-    while (scanf("%d", &x) != EOF)
-    {
-        
-        int n = 0; 
-        char c;
-        int i;
-        while (1) 
-        {
-            scanf("%lld", &a[n]);
-            n++;
-            
-            c = getchar(); 
-            while (c == ' ') 
-            {
-                c = getchar();
-            }
-
-            if (c == '\n' || c == EOF) 
-            {
-                break;
-            }
-
-            ungetc(c, stdin);
-        }
-        
-        long long result = 0;
-        int current_power = n - 1; 
-        
-        for (i = 0; i < n - 1; i++) 
-        {
-            long long diff_coeff = a[i] * current_power;
-            
-            result = result * x + diff_coeff;
-            
-            current_power--; 
-        }
-        
-        printf("%lld\n", result);
-    }
-
-    return 0;
+	int x;
+	while(cin>>x)
+	{
+		long long int arr[200000],f;
+		int n,i;
+		
+		for(n=0;;n++)
+		{
+			cin>>arr[n];
+			if(getchar()=='\n')
+			{
+				break;
+			}
+		}
+		
+		f=arr[0]*n;
+		for(int i=1;i<n;i++)
+		{
+            // ç”¨ Horner's Method (ç§¦ä¹éŸ¶) 
+			f=f*x+arr[i]*(n-i);
+		}
+		
+		cout<<f<<"\n";
+	}
+	return 0;
 }
 
+//Cèªè¨€
+#include <stdio.h>
+#define MAX_SIZE 100000 
+
+int main() {
+   int x;
+   long long a[MAX_SIZE]; // å­˜ä¿‚æ•¸ï¼Œç”¨ long long é˜²çˆ†
+   
+   // 1. å¤–å±¤è¿´åœˆï¼šè®€å–æ¯ä¸€é¡Œçš„ X
+   while (scanf("%d", &x) != EOF) 
+	{
+       
+       int n = 0; // è¨˜éŒ„é€™ä¸€é¡Œæœ‰å¹¾å€‹ä¿‚æ•¸
+       char c;
+       // 2. å…§å±¤è¿´åœˆï¼šè™•ç†é‚£ä¸€é•·ä¸²ä¿‚æ•¸
+       while (1) 
+		{
+           scanf("%lld", &a[n]);
+           n++;
+           
+           c = getchar(); 
+           // å¦‚æœè®€åˆ°çš„æ˜¯ç©ºç™½ï¼Œå°±æŒçºŒåƒæ‰ï¼Œç›´åˆ°é‡åˆ°ã€Œéç©ºç™½ã€çš„æ±è¥¿
+           while (c == ' ') 
+			{
+               c = getchar();
+           }
+
+           // å¦‚æœåƒå®Œç©ºç™½ç™¼ç¾æ˜¯æ›è¡Œï¼Œæˆ–è€…æª”æ¡ˆçµæŸï¼Œå°±è©²åœäº†
+           if (c == '\n' || c == EOF) 
+			{
+               break;
+           }
+
+           // å¦‚æœä¸æ˜¯æ›è¡Œ (ä¾‹å¦‚æ˜¯ä¸‹ä¸€å€‹æ•¸å­—çš„é–‹é ­)ï¼ŒæŠŠå®ƒæ”¾å›å»çµ¦ scanf è®€
+           ungetc(c, stdin);
+       }
+   }
+       
+       // å‡è¨­è¼¸å…¥ 1 1 1 (x^2 + x + 1)ï¼Œn=3
+       // æˆ‘å€‘è¦ç®—å¾®åˆ†å¾Œçš„æ•¸å€¼
+       
+       long long result = 0;
+       // æœ€é«˜æ¬¡æ–¹ (degree) = n - 1
+       // å¾®åˆ†å…¬å¼ï¼š C * x^p  ->  C * p * x^(p-1)
+       // æ³¨æ„ï¼šå¸¸æ•¸é … (æœ€å¾Œä¸€é … a[n-1]) å¾®åˆ†å¾Œæ˜¯ 0ï¼Œæ‰€ä»¥æˆ‘å€‘åªè·‘åˆ° n-2
+       
+       int current_power = n - 1; // ç•¶å‰é …çš„æ¬¡æ–¹
+       
+       for (int i = 0; i < n - 1; i++) {
+           // é€™ä¸€é …å¾®åˆ†å¾Œçš„ä¿‚æ•¸ = åŸä¿‚æ•¸ * æ¬¡æ–¹
+           long long diff_coeff = a[i] * current_power;
+           
+           // ç”¨ Horner's Method (ç§¦ä¹éŸ¶) ç´¯åŠ 
+           // é€™ç¨®ç®—æ³•ä¸ç”¨ pow()ï¼Œç²¾æº–åˆå¿«
+           result = result * x + diff_coeff;
+           
+           current_power--; // æ¬¡æ–¹éæ¸›
+       }
+       
+       // ç‰¹åˆ¤ï¼šå¦‚æœåŸæœ¬åªæœ‰ä¸€å€‹å¸¸æ•¸ (ä¾‹å¦‚è¼¸å…¥åªæœ‰ "5")
+       // å¾®åˆ†å¾Œæ‡‰è©²æ˜¯ 0ï¼Œä¸Šé¢çš„è¿´åœˆä¸æœƒè·‘ï¼Œresult é è¨­å°±æ˜¯ 0ï¼Œæ­£ç¢ºã€‚
+       
+       printf("%lld\n", result);
+   }
+
+   return 0;
+}
