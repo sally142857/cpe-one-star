@@ -1,3 +1,41 @@
+//C++
+#include <iostream>
+#include <cmath> 
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		int n,flag=0;
+		int fib[40]={0,1};
+		cin>>n;
+		cout<<n<<" = "; 
+		for(int i=2;i<40;i++)
+		{
+			fib[i]=fib[i-1]+fib[i-2];
+		}
+		for(int i=39;i>1;i--)
+		{
+			if(n>=fib[i])
+			{
+				n-=fib[i];
+				flag=1;
+				cout<<"1";
+			}
+			else if(flag==1)
+			{
+				cout<<"0";
+			}
+		}
+		cout<<" (fib)"<<endl;
+	}
+	return 0;
+}
+//C語言
 #include <stdio.h>
 
 int main()
