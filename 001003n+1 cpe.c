@@ -1,3 +1,50 @@
+//C++
+#include <iostream>
+#include <cstdio> 
+#include <utility>
+using namespace std;
+
+int main()
+{
+	int i,j;
+	
+	while(cin>>i>>j)
+	{
+		int org_i=i;
+		int org_j=j;
+		int max=0;
+		if(i>j)
+		{
+			swap(i,j);		
+		}
+		
+		for(long long n=i;n<=j;n++)
+		{
+			int count=1;
+			long long m=n;
+			while(m!=1)
+			{
+				if(m%2!=0)
+				{
+					m=3*m+1;
+					count++;
+				}
+				else if(m%2==0)
+				{
+					m/=2;
+					count++;
+				}
+			}
+			if(max<count)
+			{
+				max=count;
+			}
+		}
+		printf("%d %d %d\n",org_i,org_j,max);
+	}
+	return 0;
+}
+//Cèªžè¨€
 #include <stdio.h>
 
 int main()
@@ -12,35 +59,35 @@ int main()
 		int org_i=i;
 		int org_j=j;
 		
-		if(i>j) //½T«Oj>i 
+		if(i>j) //ç¢ºä¿j>i 
 		{
 			temp=j;
 			j=i;
 			i=temp;
 		}
 	
-		for(n=i;n<=j;n++) //±Ni¦s¶in¸Ì­±¡A½T«Oiªº¼Æ¾Ú¤£·|¿ò¥¢
-		                 //¥În<j¨Ó­pºâ[i,j]½d³ò¤ºªº¼Æ 
+		for(n=i;n<=j;n++) //å°‡iå­˜é€²nè£¡é¢ï¼Œç¢ºä¿içš„æ•¸æ“šä¸æœƒéºå¤±
+		                 //ç”¨n<jä¾†è¨ˆç®—[i,j]ç¯„åœå…§çš„æ•¸ 
 		{
-			count=1; //±N­p¼Æªì©l¤Æ
-			m=n; //½T«Onªº­È¤£ÅÜ(¦pªGnª½±µ±a¤Jwhile·|¶Ã±¼) 
+			count=1; //å°‡è¨ˆæ•¸åˆå§‹åŒ–
+			m=n; //ç¢ºä¿nçš„å€¼ä¸è®Š(å¦‚æžœnç›´æŽ¥å¸¶å…¥whileæœƒäº‚æŽ‰) 
 			
-			while(m!=1) //¦bm=1¤§«e·|¤@ª½¶]¤U¥h¡A¥Îm¤U¥h¶]3n+1ªº¹Bºâ 
+			while(m!=1) //åœ¨m=1ä¹‹å‰æœƒä¸€ç›´è·‘ä¸‹åŽ»ï¼Œç”¨mä¸‹åŽ»è·‘3n+1çš„é‹ç®— 
 			{
-				if(m%2!=0) //n¬°©_¼Æ 
+				if(m%2!=0) //nç‚ºå¥‡æ•¸ 
 				{
 					m=(3*m)+1;
-					count++; //­pºâ¼Æ¶q(¨Cºâ¤@¦¸´N+1) 
+					count++; //è¨ˆç®—æ•¸é‡(æ¯ç®—ä¸€æ¬¡å°±+1) 
 				}
-				else //n¬°°¸¼Æ 
+				else //nç‚ºå¶æ•¸ 
 				{
 					m=m/2;
-					count++;//­pºâ¼Æ¶q
+					count++;//è¨ˆç®—æ•¸é‡
 				}
 			}
 			if(max<count)
 			{
-				max=count; //§ä¥X³Ì¤j 
+				max=count; //æ‰¾å‡ºæœ€å¤§ 
 			}
 		}
 		printf("%d %d %d\n",org_i,org_j,max);
