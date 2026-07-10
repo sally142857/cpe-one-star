@@ -1,27 +1,22 @@
 //C++版本
 #include <iostream>
 #include <cmath>
-#include <cstdio>
 #include <algorithm>
 using namespace std;
 
 int main()
 {
-	int n;
-	scanf("%d",&n);
-	
-	while(n--)
+	int time=0;
+	cin>>time;
+	while(time--)
 	{
 		int r,sum=0;
-		scanf("%d",&r);
-		
-		int arr[501]={};
-		
+		cin>>r;
+		int arr[501];
 		for(int i=0;i<r;i++)
 		{
-			scanf("%d",&arr[i]);	
-		} 
-		
+			cin>>arr[i];
+		}
 		sort(arr,arr+r);
 		int mid=arr[r/2];
 		
@@ -29,9 +24,8 @@ int main()
 		{
 			sum+=abs(arr[i]-mid);
 		}
-		printf("%d\n",sum);
+		cout<<sum<<endl;
 	}
-	
 	return 0;	
 } 
 
