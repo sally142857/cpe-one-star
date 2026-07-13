@@ -1,37 +1,34 @@
 //C++
-#include <iostream>
-#include <cstdio> 
-#include <utility>
+#include <iostream> 
+#include <utility> //這個是swap的標頭檔
+#include <bits/stdc++.h> //其實有這個就好
 using namespace std;
 
 int main()
 {
-	int i,j;
-	
-	while(cin>>i>>j)
+	int a,b;
+	while(cin>>a>>b)
 	{
-		int org_i=i;
-		int org_j=j;
+		int x=a,y=b;
 		int max=0;
-		if(i>j)
+		if(a>b)
 		{
-			swap(i,j);		
+			swap(a,b);
 		}
-		
-		for(long long n=i;n<=j;n++)
+		for(int i=a;i<=b;i++)
 		{
+			int n=i;
 			int count=1;
-			long long m=n;
-			while(m!=1)
+			while(n!=1)
 			{
-				if(m%2!=0)
+				if(n%2!=0)
 				{
-					m=3*m+1;
+					n=3*n+1;
 					count++;
 				}
-				else if(m%2==0)
+				else
 				{
-					m/=2;
+					n/=2;
 					count++;
 				}
 			}
@@ -40,10 +37,10 @@ int main()
 				max=count;
 			}
 		}
-		printf("%d %d %d\n",org_i,org_j,max);
+		cout<<x<<" "<<y<<" "<<max<<endl;
 	}
-	return 0;
-}
+	return 0;	
+} 
 //C語言
 #include <stdio.h>
 
