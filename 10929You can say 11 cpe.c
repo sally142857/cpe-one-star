@@ -1,3 +1,41 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string s;
+	while(cin>>s)
+	{
+		if(s[0]=='0'&&s[1]=='\0')
+		{
+			break;
+		}
+		int odd=0,even=0;
+		
+		for(int i=0;s[i]!='\0';i++)
+		{
+			if(i%2!=0)
+			{
+				odd+=s[i]-'0';
+			}
+			else
+			{
+				even+=s[i]-'0';
+			}
+		}
+		if((odd-even)%11==0)
+		{
+			cout<<s<<" is a multiple of 11.\n";	
+		} 
+		else
+		{
+			cout<<s<<" is not a multiple of 11.\n";	
+		}
+	}
+	return 0;	
+} 
+//Cèªžè¨€
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -21,11 +59,11 @@ int main()
 		{
 			if(i%2==0)
 			{
-				l+=n[i]-'0'; //°¸¼Æ 	
+				l+=n[i]-'0'; //Â°Â¸Â¼Ã† 	
 			}
 			else
 			{
-				r+=n[i]-'0';   //©_¼Æ
+				r+=n[i]-'0';   //Â©_Â¼Ã†
 			}	
 		}
 		
