@@ -16,19 +16,15 @@ int main()
                 if(s1[i]==s2[j]) {
                 s=s+s1[i];
                 s1.erase(i,1); //擦掉該字避免重複查找
-                //刪除s1中下標為i的1個字符
+                //從索引s1位置 i 開始，總共刪除 1 個字元
                 s2.erase(j,1); //擦掉該字避免重複查找
-                //刪除s2中下標為j的1個字符
-                /*原本的硬幹法
-                s1[i]=-1;
-                s2[j]=-2;
-                */
+                //從索引s2位置 i 開始，總共刪除 1 個字元
                 }
             }
         }
-        sort(s.begin(),s.end());
+        sort(s.begin(),s.end()); //根據字符排序
         cout<<s<<endl;
-        s1.clear(),s2.clear(),s.clear();
+        s1.clear(),s2.clear(),s.clear(); //清空
     }
     return 0;
 }
