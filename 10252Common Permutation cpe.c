@@ -1,3 +1,94 @@
+//C++ -1
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s1,s2,s;
+    while(getline(cin,s1),getline(cin,s2))
+    {   
+        if(s1==" "||s2==" ") {
+            cout<<" "<<endl;
+            continue;}
+        for(int i=0;i<s1.length();i++)
+        {
+            for(int j=0;j<s2.length();j++)
+            {
+                if(s1[i]==s2[j]) {
+                s=s+s1[i];
+                s1.erase(i,1); //æ“¦æŽ‰è©²å­—é¿å…é‡è¤‡æŸ¥æ‰¾
+                //åˆªé™¤s1ä¸­ä¸‹æ¨™ç‚ºiçš„1å€‹å­—ç¬¦
+                s2.erase(j,1); //æ“¦æŽ‰è©²å­—é¿å…é‡è¤‡æŸ¥æ‰¾
+                //åˆªé™¤s2ä¸­ä¸‹æ¨™ç‚ºjçš„1å€‹å­—ç¬¦
+                /*åŽŸæœ¬çš„ç¡¬å¹¹æ³•
+                s1[i]=-1;
+                s2[j]=-2;
+                */
+                }
+            }
+        }
+        sort(s.begin(),s.end());
+        cout<<s<<endl;
+        s1.clear(),s2.clear(),s.clear();
+    }
+    return 0;
+}
+//C++ -2
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string a,b;
+	while(getline(cin,a),getline(cin,b))
+	{
+		if(a==" "||b==" ")
+		{
+			cout<<" "<<endl;
+			continue;
+		}
+		int arr_a[123]={0};
+		int arr_b[123]={0};
+		int count[123]={0};
+		
+		for(int i=0;i<a.length();i++)
+		{
+			arr_a[a[i]]++;
+		}
+		for(int j=0;j<b.length();j++)
+		{
+			arr_b[b[j]]++;
+		}
+		for(int i=97;i<=122;i++)
+		{
+			if(arr_a[i]>0&&arr_b[i]>0)
+			{
+				if(arr_a[i]>arr_b[i])
+				{
+					count[i]=arr_b[i];
+				}
+				else if(arr_a[i]<arr_b[i])
+				{
+					count[i]=arr_a[i];
+				}
+				else
+				{
+					count[i]=arr_a[i];
+				}
+			}
+			if(count[i]>0)
+			{
+				for(int j=0;j<count[i];j++)
+				{
+					cout<<char(i);	
+				}	
+			}
+		} 
+		cout<<"\n";
+	}
+	return 0;	
+} 
+
+//Cèªžè¨€
 #include <stdio.h>
 
 int main()
@@ -7,13 +98,13 @@ int main()
 	
 	while(gets(a) && gets(b))
 	{
-		int count_A[123]={0}; //¬ö¿ýa¦r¦ê¥X²{¦¸¼Æ 
-		int count_B[123]={0}; //¬ö¿ýb¦r¦ê¥X²{¦¸¼Æ 
-		int count[123]={0};   //¬ö¿ý­«½Æªº¦r¥À 
+		int count_A[123]={0}; //ç´€éŒ„aå­—ä¸²å‡ºç¾æ¬¡æ•¸ 
+		int count_B[123]={0}; //ç´€éŒ„bå­—ä¸²å‡ºç¾æ¬¡æ•¸ 
+		int count[123]={0};   //ç´€éŒ„é‡è¤‡çš„å­—æ¯ 
 		int i,j,x;
 		for(i=0;a[i]!='\0';i++)
 		{
-			//¦]¬°a[i]´N¬Oascii½X¡A©Ò¥H¥i¥Hª½±µ©ñ¤J 
+			//å› ç‚ºa[i]å°±æ˜¯asciiç¢¼ï¼Œæ‰€ä»¥å¯ä»¥ç›´æŽ¥æ”¾å…¥ 
 			count_A[a[i]]++;
 		}
 		
@@ -26,7 +117,7 @@ int main()
 		{
 			if(count_A[i]>0 && count_B[i]>0)
 			{
-				//¥i¯à·|¦³¤@¼Ë¥B­«½Æªº¦r¥À¡A³o®É­n¤ñ¸û¦¸¼Æ 
+				//å¯èƒ½æœƒæœ‰ä¸€æ¨£ä¸”é‡è¤‡çš„å­—æ¯ï¼Œé€™æ™‚è¦æ¯”è¼ƒæ¬¡æ•¸ 
 				if(count_A[i]>count_B[i])
 				{
 					for(j=0;j<count_B[i];j++)
@@ -52,7 +143,7 @@ int main()
 			}
 			if(count[i]>0) 
 			{
-				//¦³´X¦¸¤@¼Ë´N¿é¥X´X¦¸ 
+				//æœ‰å¹¾æ¬¡ä¸€æ¨£å°±è¼¸å‡ºå¹¾æ¬¡ 
 				for(x=0;x<count[i];x++)
 				{
 					printf("%c",(char)i);
