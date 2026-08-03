@@ -14,11 +14,11 @@ int main()
 			{
 				k=n[i]-'0';
 			}
-			else if(n[i]>='A'&&n[i]<='Z')
+			else if(n[i]>='A'&&n[i]<='Z')// A~Z 換成 10~35
 			{
 				k=n[i]-'A'+10;
 			}
-			else if(n[i]>='a'&&n[i]<='z')
+			else if(n[i]>='a'&&n[i]<='z')// a~z 換成 36~61
 			{
 				k=n[i]-'a'+36;
 			}
