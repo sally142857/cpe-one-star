@@ -1,3 +1,53 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int bin(string s)
+{
+	int n=0;
+	for(int i=0;i<s.length();i++)
+	{
+		n=n*2+(s[i]-'0');	
+	}
+	return n;
+}
+int GCD(int x,int y)
+{
+	if(x%y==0)
+	{
+		return y;
+	}
+	else
+	{
+		return GCD(y,x%y);
+	}
+}
+int main()
+{
+	int n,T=1;
+	cin>>n;
+	string s1,s2;
+	while(n--)
+	{
+		cin>>s1;
+		cin>>s2;
+		int a,b;
+		a=bin(s1);
+		b=bin(s2);
+		cout<<"Pair #"<<T<<": ";
+		if(GCD(a,b)>1)
+		{
+			cout<<"All you need is love!\n";
+		}
+		else
+		{
+			cout<<"Love is not all you need!\n";
+		}
+		T++;
+	}
+	return 0;	
+} 
+//C語言
 #include <stdio.h>
 
 int binaryToDecimal(char s[])
