@@ -1,8 +1,5 @@
 //C++版本
-#include <iostream>
-#include <cmath>
-#include <cstdio>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -13,30 +10,30 @@ int main()
 		int sum=0;
 		for(int i=0;i<n.length();i++)
 		{
-			sum+=(n[i]-'0');
+			sum+=n[i]-'0';
 		}
 		if(sum%9==0)
 		{
-			int d=1;
+			int count=1;
 			while(sum%9==0&&sum!=9)
 			{
 				int k=sum;
 				sum=0;
-				while(k>0)
+				while(k>0) //計算dgree (9的倍數一直相加，直到剩下個位數)
 				{
 					sum+=k%10;
 					k/=10;
 				}
-				d++;
+				count++;
 			}
-			cout<<n<<" is a multiple of 9 and has 9-degree"<<d<<endl;
+			cout<<n<<" is a multiple of 9 and has 9-degree "<<count<<".\n";
 		}
 		else
 		{
-			cout<<n<<"is not a multiple of 9.\n";
+			cout<<n<<" is not a multiple of 9.\n";
 		}
 	}
-	return 0;
+	return 0;	
 }
 
 //C語言版本
