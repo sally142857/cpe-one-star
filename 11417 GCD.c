@@ -1,3 +1,37 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int GCD(int x,int y)
+{
+	if(x%y==0)
+	{
+		return y;
+	}
+	else
+	{
+		return GCD(y,x%y);
+	}
+}
+
+int main()
+{
+	int n;
+	while(cin>>n&&n!=0)
+	{
+		int G=0;
+		for(int i=1;i<n;i++)
+		{
+			for(int j=i+1;j<=n;j++)
+			{
+				G+=GCD(i,j);
+			}
+		}
+		cout<<G<<endl;
+	}
+	return 0;	
+}
+//Cèªžè¨€
 #include<math.h>      
 #include<string.h>    
 #include<stdio.h>
@@ -24,7 +58,7 @@ int main()
 		{
 			for(j=i+1;j<=n;j++)
 			{
-				G+=GCD(i,j); //­pºâ1~n½d³òªºGCD©M 
+				G+=GCD(i,j); //Â­pÂºÃ¢1~nÂ½dÂ³Ã²ÂªÂºGCDÂ©M 
 			}
 		}
 		
