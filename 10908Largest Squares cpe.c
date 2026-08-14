@@ -1,3 +1,54 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		int m,n,q;
+		cin>>m>>n>>q;
+		cout<<m<<" "<<n<<" "<<q<<"\n";
+		string s[150];
+		for(int i=0;i<m;i++)
+		{
+			cin>>s[i];
+		}
+		while(q--)
+		{
+			int r,c,num=0,width=1; //高度紀錄 
+			cin>>r>>c;
+			bool flag=true;
+			while(flag)
+			{
+				num++;
+				for(int i=r-num;i<=r+num&&flag==true;i++)
+				{
+					for(int j=c-num;j<=c+num&&flag==true;j++)
+					{
+						if(i<0||j<0||i>=m||j>=n)
+						{
+							flag=false;
+						}
+						else if(s[i][j]!=s[r][c])
+						{
+							flag=false;
+						}
+					}
+				}
+				if(flag==true)
+				{
+					width+=2; //左右兩邊 
+				}
+			}
+			cout<<width<<"\n";
+		} 
+	}
+	return 0;	
+} 
+//C語言
 #include <stdio.h>
 
 int main()
