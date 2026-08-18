@@ -1,3 +1,56 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int arr[1000000];
+int main()
+{
+	int n;
+	while(cin>>n)
+	{
+		int mid1,mid2,num=0,count;
+		//vector<int> arr(n); //另外一版 
+		for(int i=0;i<n;i++)
+		{
+			cin>>arr[i];
+		}
+		sort(arr,arr+n);
+		//sort(arr.begin(), arr.end());
+		if(n%2==1) //只有一個中位數 
+		{
+			mid1=arr[(n-1)/2];//找出中位數
+			for(int i=0;i<n;i++)
+			{
+				if(arr[i]==arr[n/2])
+				{
+					num++; //找出數列中有幾個與中位數相同的數字
+				}
+			}
+			count=1;
+		}
+		else //有多個中位數
+		{
+			mid1=arr[n/2-1];
+			mid2=arr[n/2];
+			for(int i=0;i<n;i++)
+			{
+				if(arr[i]==arr[n/2])
+				{
+					num++;
+				}
+				else if(arr[i]==arr[(n-1)/2])
+				{
+					num++;
+				}
+			}
+			count=mid2-mid1+1;//找出這個中位數有幾種可能，這裡有兩個中位數，所以要包含這兩個中位數外
+            //，還要再包含兩數之間的所有整數。例如：中位數為5,8，則 c=5,6,7,8
+		} 
+		cout<<mid1<<" "<<num<<" "<<count<<"\n";
+	}
+	return 0;	
+} 
+//C語言
 #include <stdio.h>
 #include <stdlib.h>
 
