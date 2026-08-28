@@ -1,3 +1,37 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		int n;
+		cin>>n;
+		int arr[51]={0};
+		for(int i=0;i<n;i++)
+		{
+			cin>>arr[i];
+		}
+		//逆序數對
+		int count=0;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<i;j++)
+			{
+				if(arr[i]<arr[j])
+				{
+					count++;
+				}
+			}
+		}
+		cout<<"Optimal train swapping takes "<<count<<" swaps.\n";
+	}
+	return 0;	
+} 
+//C語言
 #include <stdio.h>
 
 int main()
