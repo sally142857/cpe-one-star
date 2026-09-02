@@ -1,3 +1,111 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n,m,sx,sy;
+	char D[2],cmd[1000],pre[100][100]={};
+	cin>>n>>m;
+	while(cin>>sx>>sy>>D)
+	{
+		cin>>cmd;
+		int d=D[0],flag=0;
+		for(int i=0;cmd[i]!='\0';i++) //ä¹Ÿå¯ä»¥ç›´æ¥å¯«cmdp+[i] 
+		{
+			if(cmd[i]=='F') //ç›´èµ° 
+			{
+				switch(d)
+				{
+					case 'N':
+						sy++;
+						break;
+					case 'E':
+						sx++;
+						break;
+					case 'W':
+						sx--;
+						break;
+					case 'S':
+						sy--;
+						break;
+				}
+			}
+			else if(cmd[i]=='R') //å³è½‰ 
+			{
+				switch(d)
+				{
+					case 'N':
+						d='E';
+						break;
+					case 'E':
+						d='S';
+						break;
+					case 'W':
+						d='N';
+						break;
+					case 'S':
+						d='W';
+						break;
+				}
+			}
+			else //å·¦è½‰ 
+			{
+				switch(d)
+				{
+					case 'N':
+						d='W';
+						break;
+					case 'E':
+						d='N';
+						break;
+					case 'W':
+						d='S';
+						break;
+					case 'S':
+						d='E';
+						break;
+				}
+			}
+			if(sx<0||sy<0||sx>n||sy>m)
+			{
+				switch(d)
+				{
+					case 'N':
+						sy--;
+						break;
+					case 'E':
+						sx--;
+						break;
+					case 'W':
+						sx++;
+						break;
+					case 'S':
+						sy++;
+						break;
+				}
+				if(pre[sx][sy]==1)
+				{
+					continue;
+				}
+				flag=1;
+				pre[sx][sy]=1;
+				break;	
+			}
+		
+		}
+		if(flag==0)
+		{
+			cout<<sx<<" "<<sy<<" "<<char(d)<<"\n";
+		}
+		else
+		{
+			cout<<sx<<" "<<sy<<" "<<char(d)<<" LOST\n";
+		}
+	}
+	return 0;	
+} 
+//Cèªè¨€
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,11 +113,11 @@
 int main()
 {
 	int mapx,mapy;
-	scanf("%d %d",&mapx,&mapy); //¨ä¹ê´N¬O¦a¹Ï¤j¤p 
+	scanf("%d %d",&mapx,&mapy); //å…¶å¯¦å°±æ˜¯åœ°åœ–å¤§å° 
 	
 	int dir;
-	int dx[]={0,1,0,-1}; //¥ª¥k 
-	int dy[]={1,0,-1,0}; //¤W¤U 
+	int dx[]={0,1,0,-1}; //å·¦å³ 
+	int dy[]={1,0,-1,0}; //ä¸Šä¸‹ 
 	int scent[55][55]={0};
 	
 	int x,y,i;
@@ -39,7 +147,7 @@ int main()
 		
 		
 		int len=strlen(str);
-		int lost=0; //§PÂ_¾÷¾¹¤H¬O§_±¼¸¨
+		int lost=0; //åˆ¤æ–·æ©Ÿå™¨äººæ˜¯å¦æ‰è½
 		
 		for(i=0;i<len;i++)
 		{
@@ -49,16 +157,16 @@ int main()
 			}
 			else if(str[i]=='L')
 			{
-				dir=(dir+3)%4;  //¤@­Ó¶g´Á (dir-1+3)%4 
+				dir=(dir+3)%4;  //ä¸€å€‹é€±æœŸ (dir-1+3)%4 
 			}
 			else if(str[i]=='F')
 			{
 				int nx=x+dx[dir];
 				int ny=y+dy[dir];
 				
-				if(nx<0 || nx>mapx || ny<0 || ny>mapy) //§PÂ_¬O§_¥X¬É 
+				if(nx<0 || nx>mapx || ny<0 || ny>mapy) //åˆ¤æ–·æ˜¯å¦å‡ºç•Œ 
 				{
-					if(scent[x][y]==1) //¬O§_¦³¾÷¾¹¤H±¼¸¨¹L 
+					if(scent[x][y]==1) //æ˜¯å¦æœ‰æ©Ÿå™¨äººæ‰è½é 
 					{
 						continue;
 					}
@@ -66,7 +174,7 @@ int main()
 					{
 						lost=1;
 						scent[x][y]=1;
-						break; //¾÷¾¹¤H±¼¸¨¡A¤£¥Î¶]¤F 
+						break; //æ©Ÿå™¨äººæ‰è½ï¼Œä¸ç”¨è·‘äº† 
 					}
 				}
 				else
