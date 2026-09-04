@@ -1,3 +1,71 @@
+//C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int n,m; //ç”¨å…¨å±€è®Šé‡è¡¨ç¤º 
+bool cmp(int a,int b)
+{
+	if(a%m!=b%m)
+	//é¤˜æ•¸ä¸åŒï¼Œé¤˜æ•¸å°çš„å‰ å¤§çš„å¾Œ
+	{
+		return a%m<b%m;
+	}
+	else
+	{
+		//é¤˜æ•¸ç›¸åŒ 
+		if(abs(a%2))
+		{
+			if(abs(b%2))
+			{
+				return a>b; //aå¥‡bå¥‡ï¼Œå¤§å¥‡æ•¸æ’å‰é¢ 
+			}
+			else
+			{
+				return true; //aå¥‡bå¶ï¼Œæ‰€ä»¥ä½ç½®è¦äº’æ›
+			}
+		}
+		else
+		{
+			if(abs(b%2))
+			{
+				return false; //aå¶bå¥‡æ•¸ï¼Œæ‰€ä»¥ä½ç½®ä¸ç”¨æ›
+			}
+			else
+			{
+				return a<b; //aå¶bå¶ï¼Œå°å¶æ•¸æ’å‰é¢
+			}
+		}
+		//ä¸€å¥‡ä¸€å¶ï¼Œå¥‡æ•¸å‰ å¶æ•¸å¾Œ
+        //å…©å¥‡æ•¸ï¼Œå¤§å¥‡å‰
+        //å…©å¶æ•¸ï¼Œå°å¶å‰
+	}
+	return a<b;
+}
+
+int main()
+{
+	while(cin>>n>>m)
+	{
+		if(n==0&&m==0)
+		{
+			cout<<0<<" "<<0<<"\n";
+			break;
+		}
+		int arr[10005];
+		for(int i=0;i<n;i++)
+		{
+			cin>>arr[i];
+		} 
+		sort(arr,arr+n,cmp); //å°æ•¸çµ„Açš„0~n-1å…ƒç´ é€²è¡Œcmpæ’åº
+		cout<<n<<" "<<m<<"\n";
+		for(int i=0;i<n;i++)
+		{
+			cout<<arr[i]<<"\n";
+		}
+	}
+	return 0;	
+} 
+//Cèªè¨€
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,43 +73,43 @@ int n, m;
 
 int compare(const void *a, const void *b) 
 {
-    // 1. §â void «ü¼ĞÂà¦^ int ­È
+    // 1. æŠŠ void æŒ‡æ¨™è½‰å› int å€¼
     int numA = *(int *)a;
     int numB = *(int *)b;
     
-    // 0. (¿ï°t) ¦pªG¨â¼Æ§¹¥ş¬Ûµ¥¡Aª½±µ¦^¶Ç 0
+    // 0. (é¸é…) å¦‚æœå…©æ•¸å®Œå…¨ç›¸ç­‰ï¼Œç›´æ¥å›å‚³ 0
     if (numA == numB) return 0;
 
-    // 2. ¥ı¤ñ¾l¼Æ
-    if ((numA % m) > (numB % m)) return 1;   // ¾l¼Æ¤j¡A±Æ«á­±
-    if ((numA % m) < (numB % m)) return -1;  // ¾l¼Æ¤p¡A±Æ«e­±
+    // 2. å…ˆæ¯”é¤˜æ•¸
+    if ((numA % m) > (numB % m)) return 1;   // é¤˜æ•¸å¤§ï¼Œæ’å¾Œé¢
+    if ((numA % m) < (numB % m)) return -1;  // é¤˜æ•¸å°ï¼Œæ’å‰é¢
 
-    // 3. ¾l¼Æ¬Ûµ¥¡A¤ñ©_°¸
-    // (µ{¦¡¶]¨ì³o¡A¥Nªí¾l¼Æ¤@©w¤@¼Ë¡A¥i¥Hª½±µ¤ñ)
+    // 3. é¤˜æ•¸ç›¸ç­‰ï¼Œæ¯”å¥‡å¶
+    // (ç¨‹å¼è·‘åˆ°é€™ï¼Œä»£è¡¨é¤˜æ•¸ä¸€å®šä¸€æ¨£ï¼Œå¯ä»¥ç›´æ¥æ¯”)
     
     int oddA = numA % 2;
     int oddB = numB % 2;
 
-    // ª¬ªp A: ¤@©_¤@°¸ (©_¼Æ­n±Æ«e­±)
-    // §Q¥Îµ´¹ï­È©Î¤£µ¥©ó0¨Ó½T«O­t¼Æ©_¼Æ¤]¯à³Q§ì¨ì
-    if (oddA == 0 && oddB != 0) return 1;   // A°¸ B©_ -> A±Æ«á­±
-    if (oddA != 0 && oddB == 0) return -1;  // A©_ B°¸ -> A±Æ«e­±
+    // ç‹€æ³ A: ä¸€å¥‡ä¸€å¶ (å¥‡æ•¸è¦æ’å‰é¢)
+    // åˆ©ç”¨çµ•å°å€¼æˆ–ä¸ç­‰æ–¼0ä¾†ç¢ºä¿è² æ•¸å¥‡æ•¸ä¹Ÿèƒ½è¢«æŠ“åˆ°
+    if (oddA == 0 && oddB != 0) return 1;   // Aå¶ Bå¥‡ -> Aæ’å¾Œé¢
+    if (oddA != 0 && oddB == 0) return -1;  // Aå¥‡ Bå¶ -> Aæ’å‰é¢
 
-    // ª¬ªp B: ³£¬O©_¼Æ (¤jªº±Æ«e­±)
+    // ç‹€æ³ B: éƒ½æ˜¯å¥‡æ•¸ (å¤§çš„æ’å‰é¢)
     if (oddA != 0 && oddB != 0) 
     {
-        if (numA < numB) return 1;  // A¤ñ¸û¤p -> A±Æ«á­±
-        else return -1;             // A¤ñ¸û¤j -> A±Æ«e­±
+        if (numA < numB) return 1;  // Aæ¯”è¼ƒå° -> Aæ’å¾Œé¢
+        else return -1;             // Aæ¯”è¼ƒå¤§ -> Aæ’å‰é¢
     }
 
-    // ª¬ªp C: ³£¬O°¸¼Æ (¤pªº±Æ«e­±)
+    // ç‹€æ³ C: éƒ½æ˜¯å¶æ•¸ (å°çš„æ’å‰é¢)
     if (oddA == 0 && oddB == 0) 
     {
-        if (numA > numB) return 1;  // A¤ñ¸û¤j -> A±Æ«á­±
-        else return -1;             // A¤ñ¸û¤p -> A±Æ«e­±
+        if (numA > numB) return 1;  // Aæ¯”è¼ƒå¤§ -> Aæ’å¾Œé¢
+        else return -1;             // Aæ¯”è¼ƒå° -> Aæ’å‰é¢
     }
     
-    return 0; // «OÀI¥Î
+    return 0; // ä¿éšªç”¨
 }
 
 int main()
@@ -55,7 +123,7 @@ int main()
             scanf("%d", &num[i]);
         }
         
-        // ©I¥s§Ö³t±Æ§Çªº¯«¾¹
+        // å‘¼å«å¿«é€Ÿæ’åºçš„ç¥å™¨
         qsort(num, n, sizeof(int), compare);
 
         printf("%d %d\n", n, m);
@@ -68,7 +136,7 @@ int main()
     return 0;
 }
 
-//¶W®É¤F 
+//è¶…æ™‚äº† 
 //int main()
 //{
 //	int n,m;
@@ -82,35 +150,35 @@ int main()
 //			scanf("%d",&num[i]);
 //		}
 //		
-//		//¥æ´«(®Ú¾Ú³W«h±Æ§Ç) 
+//		//äº¤æ›(æ ¹æ“šè¦å‰‡æ’åº) 
 //		for(int i=0;i<n;i++)
 //		{
 //			for(int j=i+1;j<n;j++)
 //			{
-//				if((num[i]%m)>(num[j]%m)) //¤ñ¸û¾l¼Æ¤j¤p 
+//				if((num[i]%m)>(num[j]%m)) //æ¯”è¼ƒé¤˜æ•¸å¤§å° 
 //				{
 //					int temp=num[i];
 //					num[i]=num[j];
 //					num[j]=temp;
 //				} 
-//				else if((num[i]%m)==(num[j]%m)) //­Y¾l¼Æ¤@¼Ë 
+//				else if((num[i]%m)==(num[j]%m)) //è‹¥é¤˜æ•¸ä¸€æ¨£ 
 //				{
-//					if(num[i]%2==0 && num[j]%2!=0) //¤@°¸¼Æ¤@©_¼Æ(«e­±¬O©_¼Æ´N¤£¥Î¥æ´«¡A©Ò¥H¤£¥Î¼g) 
+//					if(num[i]%2==0 && num[j]%2!=0) //ä¸€å¶æ•¸ä¸€å¥‡æ•¸(å‰é¢æ˜¯å¥‡æ•¸å°±ä¸ç”¨äº¤æ›ï¼Œæ‰€ä»¥ä¸ç”¨å¯«) 
 //					{
 //						int temp=num[i];
 //						num[i]=num[j];
 //						num[j]=temp;
 //					}
-//					else if(num[i]%2==0 && num[j]%2==0) //³£°¸¼Æ 
+//					else if(num[i]%2==0 && num[j]%2==0) //éƒ½å¶æ•¸ 
 //					{
-//						if(num[i]>num[j]) //«e­±¤j©ó«á­±­n¥æ´«(¸û¤pªº±Æ«e­±) 
+//						if(num[i]>num[j]) //å‰é¢å¤§æ–¼å¾Œé¢è¦äº¤æ›(è¼ƒå°çš„æ’å‰é¢) 
 //						{
 //							int temp=num[i];
 //							num[i]=num[j];
 //							num[j]=temp;
 //						}
 //					}
-//					else if(num[i]%2!=0 && num[j]%2!=0) //³£©_¼Æ (¸û¤j±Æ«e­±) 
+//					else if(num[i]%2!=0 && num[j]%2!=0) //éƒ½å¥‡æ•¸ (è¼ƒå¤§æ’å‰é¢) 
 //					{
 //						if(num[i]<num[j])
 //						{
