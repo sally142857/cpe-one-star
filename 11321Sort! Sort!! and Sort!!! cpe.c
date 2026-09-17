@@ -3,7 +3,7 @@
 using namespace std;
 
 int n,m; //用全局變量表示 
-bool cmp(int a,int b)
+bool cmp(int a,int b) //a 應該排在 b 的前面嗎？
 {
 	if(a%m!=b%m)
 	//餘數不同，餘數小的前 大的後
