@@ -1,3 +1,36 @@
+//C++
+#include<iostream>
+#include<set>
+using namespace std;
+int main()
+{
+  int T,n,cas=1;
+	cin>>T;
+  while(T--)
+  {
+	cin>>n;
+	  set<int>all;
+    printf("Case #%d: %d ",cas++,n);
+    while(n!=1)
+	{int sum=0;
+      if(all.count(n))
+		  break;
+	 all.insert(n);
+      while(n)
+		  {
+            sum+=(n%10)*(n%10),n/=10;
+		  }
+		 
+      n=sum;
+    }
+    if(n==1)
+		cout<<"is a Happy number."<<endl;
+  	else 
+		cout<<"is an Unhappy number."<<endl;
+  }
+  return 0;
+}
+//Ëá™Â∑±ÊÉ≥ÁöÑ
 #include <stdio.h>
 
 int main()
@@ -18,7 +51,7 @@ int main()
 		{
 			sum=0; 
 			
-			//ßP¬_Happy number 
+			//Âà§Êñ∑Happy number 
 			while(copyN>0)
 			{
 				temp=copyN%10;
@@ -26,13 +59,13 @@ int main()
 				copyN/=10;
 			}
 			
-			//§Ë™k§@(ÆM§Ω¶°) 
+			//ÊñπÊ≥ï‰∏Ä(Â•óÂÖ¨Âºè) 
 //			if(sum==4)
 //			{
 //				flag=0
 //				break;
 //			}
-			//§Ë™k§G 
+			//ÊñπÊ≥ï‰∫å 
 			if(seen[sum]==1)
 			{
 				flag=0;
