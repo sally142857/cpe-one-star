@@ -17,7 +17,7 @@ int main()
 		} 
 		//輸入測試數量
 		cin>>T2;
-		while(T2--)
+		while(T2--) //主要是求哪個進位是最便宜的
 		{
 			int Y;
 			cin>>Y; //輸入要測試的數字
