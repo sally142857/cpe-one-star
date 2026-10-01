@@ -4,51 +4,51 @@ using namespace std;
 
 int main()
 {
-	int T;
 	//unordered_map不在意排序，速度比map快
 	//map會排序 
-	unordered_map<char,string>finger=
+	map<char,string> finger=
 	{
 		{'c',"0111001111"},{'d',"0111001110"},
-        {'e',"0111001100"},{'f',"0111001000"},
-        {'g',"0111000000"},{'a',"0110000000"},
-        {'b',"0100000000"},{'C',"0010000000"},
-        {'D',"1111001110"},{'E',"1111001100"},
-        {'F',"1111001000"},{'G',"1111000000"},
-        {'A',"1110000000"},{'B',"1100000000"}
+		{'e',"0111001100"},{'f',"0111001000"},
+		{'g',"0111000000"},{'a',"0110000000"},
+		{'b',"0100000000"},{'C',"0010000000"},
+		{'D',"1111001110"},{'E',"1111001100"},
+		{'F',"1111001000"},{'G',"1111000000"},
+		{'A',"1110000000"},{'B',"1100000000"}
 	};
-	cin>>T;
+	
+	int n;
+	string song,present;
+	cin>>n;
 	cin.ignore();//接下來會用到getline所以要清空緩存區
-	while(T--)
+	while(n--)
 	{
-		string song,present;
-		present.assign(10,'0'); //將present字串設為"0000000000"
-		int count[10]; //手指按的次數
-		fill(count,count+10,0); //把 count 這個陣列裡的 10 個格子，全部歸零（塞滿 0）#飽含開始，但不包含結束
-		//輸入
+		present.assign(10,'0');//將present字串設為"0000000000"
+		int count[10]={0};
 		getline(cin,song);
-		
-		//計算
-		for(const auto& ch:song) //把 song 裡面的東西一個一個拿出來，直接看本尊不複製，且保證絕對不改到它
+		for(const auto&ch:song)
 		{
-			for(int i=0;i<10;i++)
+			for(int j=0;j<10;j++)
 			{
-				count[i]+=max(0,finger[ch][i]-present[i]); //max挑出最大的數
-				//finger[ch][i]-present[i]->目標 減去 現在 = 這根手指需要變動的差值 
-			}
+				if(finger[ch][j]>present[j])
+				{
+					count[j]+=finger[ch][j]-present[j];//挑出最大的數
+					//finger[ch][i]-present[i]->目標 減去 現在 = 這根手指需要變動的差值
+				}
+			} 
 			present=finger[ch];
-		} 
+		}
 		for(int i=0;i<10;i++)
 		{
-			if(i)
+			if(i!=0)
 			{
 				cout<<" ";
 			}
 			cout<<count[i];
 		}
 		cout<<"\n";
-	} 
-	return 0;	
+	}
+	return 0;
 }
 //C語言
 #include <stdio.h>
