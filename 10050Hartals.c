@@ -4,44 +4,45 @@ using namespace std;
 
 int main()
 {
-	int T,D,P;
+	int T;
 	cin>>T;
 	while(T--)
 	{
-		cin>>D;
-		cin>>P;
-		int h[105]; //政黨罷會間格天數
-		//輸入
-		for(int i=0;i<P;i++)
+		int n,p,h,count=0;
+		int arr[3651]={0};
+		cin>>n;
+		cin>>p;
+		while(p--)
 		{
-			cin>>h[i];
-		}
-		//檢查
-		int table[3655]={0},k; //日期
-		for(int i=0;i<P;i++)
-		{
-			k=1;
-			for(int j=h[i];j<=D;j=h[i]*k)
+			cin>>h;
+			int temp=h;
+			while(temp<=n)
 			{
-				if(j%7!=6&&j%7!=0)
+				if(temp%7==6||temp%7==0)
 				{
-					table[j]=1;
+					temp+=h;
+					continue;
 				}
-				k++;
-			}
-		} 
-		int cnt=0;
-		for(int i=1;i<=D;i++)
-		{
-			if(table[i]==1)
-			{
-				cnt++;
+				else
+				{
+					if(arr[temp]==1)
+					{
+						temp+=h;
+						continue;
+					}
+					else
+					{
+						arr[temp]=1;
+						count++;
+						temp+=h;
+					}
+				}
 			}
 		}
-		cout<<cnt<<endl;
+		cout<<count<<"\n";
 	}
-	return 0;	
-} 
+	return 0;
+}
 //C語言
 #include <stdio.h>
 
